@@ -31,8 +31,8 @@ console.log(twelve);
    You can call the method and log the result to check your work. Compare to
      http://www.mathwarehouse.com/calculators/continuous-compound-interest-calculator.php
 */
-function compundInterest(initial, rate, numYears) {
-  return initial*Math.pow(Math.E, (rate*numYears));
+function compoundInterest(initial, rate, numYears) {
+  return initial * Math.pow(Math.E, (rate*numYears));
 }
 
 
