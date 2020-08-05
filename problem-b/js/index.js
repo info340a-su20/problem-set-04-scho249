@@ -2,16 +2,22 @@
 
 /* Define a function `addFour()` that takes a single argument 
    and returns a value 4 greater than the input.*/
-
+function addFour(value) {
+  return value + 4;
+}
    
 /* Create and log a variable `twelve` that is the result of passing 8 to your
    addFour() function. */
 
+let twelve = addFour(8);
+console.log(twelve);
    
 /* Create and log a variable `twelveString` that is the result of passing "8" 
    (a string) to your addFour() function. Consider what this tells you about how
   the function should be explained (e.g., in a comment). */
 
+  let twelveString = addFour("8");
+  console.log(twelveString);
   
 
 /* Define a function `compoundInterest()` that takes three parameters: 
@@ -25,7 +31,9 @@
    You can call the method and log the result to check your work. Compare to
      http://www.mathwarehouse.com/calculators/continuous-compound-interest-calculator.php
 */
-
+function compundInterest(initial, rate, numYears) {
+  return initial*Math.pow(Math.E, (rate*numYears));
+}
 
 
 /* Define a function `fizzBuzz()` that takes in a single number as an argument.
@@ -36,7 +44,21 @@
    should contain "FizzBuzz" instead of the number.
    The returned array should be empty for arguments less than 1. */
 
-   
+function fizzBuzz(num) {
+  var arr = [];
+  for (var i = 1; i <= num; i++) {
+    if (i % 3 == 0 && i % 5 == 0) {
+      arr[i-1] = 'FizzBuzz';
+    } else if (i % 3 == 0) {
+      arr[i-1] = 'Fizz';
+    } else if (i % 5 == 0) {
+      arr[i-1] = 'Buzz';
+    } else {
+      arr[i-1] = i;
+    }
+  }
+  return arr;
+}
 
 /* Define a function `getLetterFrequencies()` that takes in a single string as 
    an argument. The function should *return* an Object whose keys are characters
@@ -48,6 +70,18 @@
    for if the letter is not in the Object yet!
    You can test this method with a word like "Mississippi". */
 
+function getLetterFrequencies (str) {
+  var  freq= {};
+  for (let i = 0; i < str.length; i++) {
+    var char = str[i];
+    if (!(char in freq)) {
+      freq[char] = 1;
+    } else {
+      freq[char] = freq[char] + 1;
+    }
+  }
+  return freq;
+}
    
 
 /* Create a variable `deck` that represents a deck of modern playing cards
@@ -62,7 +96,17 @@
     
     You can log out the `deck` to check your work! */
 
-    
+ let deck = [];
+ let suitV;
+
+
+ for (suitV of ["hearts", "diamonds", "clubs", "spades"]) {
+   for (let i = 2; i <= 14; i++) {
+     deck.push({suit: suitV, rank: i});
+   }
+ }
+
+ 
 
 //You can test the below functions by creating e.g., a `pokerHand` array that 
 //contains five cards from the `deck`.
@@ -72,18 +116,43 @@
    is in that array.
    Hint: use a loop to check each card. */
 
-   
+function containsQueenOfHearts(card) {
+  for(let i = 0; i < card.length; i++) {
+    if (card[i].suit == "hearts" && card[i].rank == 12) {
+      return true;
+    }
+  }
+  return false;
+}
+
 
 /* Define a function `getHighCard()` that takes in an array of "card" objects
   and returns the card object with the highest value. The "high card" is the one
   with the highest rank. Cards of different suits but the same rank are 
   considered to have the same value, and either is a valid result */
 
-  
+function getHighCard(card) {
+  var maxCard = card[0]; 
+  for (let i = 1; i < card.length; i++) {
+    if (maxCard.rank < card[i].rank) {
+      maxCard = card[i];
+    }
+  }
+  return maxCard;
+}
 
 /* Define a function `isFlush()` that takes in an array of "card" objects and
    returns whether or not the cards all have the same _suit_. */
 
+function isFlush(card) {
+  var suitV = card[0].suit;
+  for (let i = 1; i < card.length; i++) {
+    if (suitV != card[i].suit) {
+      return false;
+    }
+  }
+  return true;
+}
    
 
 /* Extra challenge: define a function `hasPair()` that takes in an array of 
